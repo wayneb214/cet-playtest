@@ -12,8 +12,8 @@
 <link rel="icon" type="image/png" href="./icon-180.png">
 <link rel="manifest" href="./manifest.webmanifest">
 <title>Countryside Escape Tycoon</title>
-  <script type="module" crossorigin src="./assets/index-DfKsqEf_.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-BAOSXjmM.css">
+  <script type="module" crossorigin src="./assets/index-eatwtSZA.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-Cta83AE_.css">
 </head>
 <body>
 <canvas id="game"></canvas>
@@ -29,6 +29,9 @@
       <svg id="clockIcon" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="4.2" fill="#f2b84b"/><g stroke="#f2b84b" stroke-width="1.8" stroke-linecap="round"><path d="M10 1.8v2M10 16.2v2M1.8 10h2M16.2 10h2M4.2 4.2l1.4 1.4M14.4 14.4l1.4 1.4M4.2 15.8l1.4-1.4M14.4 5.6l1.4-1.4"/></g></svg>
       <span id="clock">Day 1 · 07:00</span>
     </div>
+    <button class="iconbtn snd" id="soundBtn" aria-label="Sound">
+      <svg width="20" height="18" viewBox="0 0 20 18"><path d="M2 6.5h3.4L10 2.6v12.8L5.4 11.5H2z" fill="#fff"/><g class="waves" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round"><path d="M13 6c1.2 1.6 1.2 4.4 0 6"/><path d="M15.6 3.8c2.4 2.9 2.4 7.5 0 10.4"/></g><path class="x" d="M13 6.2l5 5.6M18 6.2l-5 5.6" stroke="#fff" stroke-width="1.9" stroke-linecap="round"/></svg>
+    </button>
     <button class="iconbtn" id="menuBtn" aria-label="Menu">
       <svg width="18" height="16" viewBox="0 0 18 16"><path d="M2 2.5h14M2 8h14M2 13.5h14" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg>
     </button>
@@ -55,6 +58,8 @@
 <button id="goal" aria-label="Goal"></button>
 <div id="paused">PAUSED</div>
 
+<div id="fields" role="tablist" aria-label="Fields"><button data-f="0">Dale End</button><button data-f="1">Beck Field</button></div>
+<div id="buyCard" class="card" hidden></div>
 <div id="confirm" hidden>
   <button id="cfNo" aria-label="Cancel placement">✕</button>
   <button id="cfYes" aria-label="Confirm build">✓ <span id="cfCost"></span></button>
