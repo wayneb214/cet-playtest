@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+    <meta name="robots" content="noindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Countryside">
+<meta name="theme-color" content="#fbf4e2">
+<link rel="apple-touch-icon" href="./icon-180.png">
+<link rel="icon" type="image/png" href="./icon-180.png">
+<link rel="manifest" href="./manifest.webmanifest">
+<title>Countryside Escape Tycoon</title>
+  <script type="module" crossorigin src="/cet-playtest/preview/assets/index-BrrXtZTc.js"></script>
+  <link rel="stylesheet" crossorigin href="/cet-playtest/preview/assets/index-CXRzcDGK.css">
+</head>
+<body>
+<canvas id="game"></canvas>
+
+<div id="top">
+  <div class="row">
+    <button class="money" id="money" aria-label="Finances">
+      <svg width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.5" fill="#e3a72f"/><circle cx="12" cy="12" r="7.6" fill="#f4c95d"/><path d="M14.6 8.4c-.5-.6-1.3-.9-2.1-.9-1.5 0-2.4 1-2.4 2.4v4.8M8.6 12h4.4M8.4 16.1h7" stroke="#a8721a" stroke-width="1.7" fill="none" stroke-linecap="round"/></svg>
+      <span id="moneyTxt">£0</span>
+    </button>
+    <div class="spacer"></div>
+    <div class="pill" id="clockPill">
+      <svg id="clockIcon" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="4.2" fill="#f2b84b"/><g stroke="#f2b84b" stroke-width="1.8" stroke-linecap="round"><path d="M10 1.8v2M10 16.2v2M1.8 10h2M16.2 10h2M4.2 4.2l1.4 1.4M14.4 14.4l1.4 1.4M4.2 15.8l1.4-1.4M14.4 5.6l1.4-1.4"/></g></svg>
+      <span id="clock">Day 1 · 07:00</span>
+    </div>
+    <button class="iconbtn snd" id="soundBtn" aria-label="Sound">
+      <svg width="20" height="18" viewBox="0 0 20 18"><path d="M2 6.5h3.4L10 2.6v12.8L5.4 11.5H2z" fill="#fff"/><g class="waves" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round"><path d="M13 6c1.2 1.6 1.2 4.4 0 6"/><path d="M15.6 3.8c2.4 2.9 2.4 7.5 0 10.4"/></g><path class="x" d="M13 6.2l5 5.6M18 6.2l-5 5.6" stroke="#fff" stroke-width="1.9" stroke-linecap="round"/></svg>
+    </button>
+    <button class="iconbtn" id="menuBtn" aria-label="Menu">
+      <svg width="18" height="16" viewBox="0 0 18 16"><path d="M2 2.5h14M2 8h14M2 13.5h14" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <div class="row stats">
+    <button class="stat" id="stGuests" aria-label="Guests">
+      <svg width="22" height="18" viewBox="0 0 22 18"><circle cx="7" cy="5" r="3.2" fill="#2a7f7a"/><path d="M1.5 16.5c0-3.6 2.5-6 5.5-6s5.5 2.4 5.5 6z" fill="#2a7f7a"/><circle cx="15.5" cy="6.5" r="2.6" fill="#7fb7b1"/><path d="M11.6 16.5c.2-3 2-5 4-5s4.6 2 4.6 5z" fill="#7fb7b1"/></svg>
+      <span id="guests">0</span>
+    </button>
+    <button class="stat" id="stBeds" aria-label="Capacity">
+      <svg width="20" height="18" viewBox="0 0 20 18"><path d="M10 2 1.5 16h17z" fill="#2a7f7a"/><path d="M10 7.5 7 16h6z" fill="#1d5450"/></svg>
+      <span id="beds">0/0</span>
+    </button>
+    <button class="stat" id="stHappy" aria-label="Happiness">
+      <svg width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8.6" fill="#f4c95d" stroke="#d99a2b" stroke-width="1.4"/><circle cx="7.2" cy="8.2" r="1.2" fill="#5a4320"/><circle cx="12.8" cy="8.2" r="1.2" fill="#5a4320"/><path id="smile" d="M6.4 11.6c1.8 2.4 5.4 2.4 7.2 0" stroke="#5a4320" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      <span id="happy">–</span>
+    </button>
+    <button class="stat" id="stRep" aria-label="Reputation">
+      <svg width="18" height="18" viewBox="0 0 20 20"><path d="M10 1.6l2.5 5.4 5.9.7-4.4 4 1.2 5.8L10 14.6l-5.2 2.9 1.2-5.8-4.4-4 5.9-.7z" fill="#e3a72f" stroke="#c48a1e" stroke-width="1" stroke-linejoin="round"/></svg>
+      <span id="rep">3.0</span>
+    </button>
+  </div>
+</div>
+<button id="goal" aria-label="Goal"></button>
+<div id="paused">PAUSED</div>
+
+<div id="fields" role="tablist" aria-label="Fields"><button data-f="0">Dale End</button><button data-f="1">Beck Field</button></div>
+<div id="zoom" aria-label="Zoom"><button id="zIn" aria-label="Zoom in">+</button><button id="zOut" aria-label="Zoom out">−</button></div>
+<div id="buyCard" class="card" hidden></div>
+<div id="confirm" hidden>
+  <button id="cfNo" aria-label="Cancel placement">✕</button>
+  <button id="cfYes" aria-label="Confirm build">✓ <span id="cfCost"></span></button>
+</div>
+<div id="info" class="card" hidden></div>
+
+<div id="bar">
+  <div class="head">
+    <div id="tools">
+      <button class="tool" data-panel="money" aria-label="Money panel"><svg width="22" height="20" viewBox="0 0 22 20"><rect x="1.5" y="4" width="19" height="13" rx="3" fill="#2a7f7a"/><rect x="1.5" y="7" width="19" height="2.6" fill="#1d5450"/><circle cx="15.5" cy="13" r="1.8" fill="#f4c95d"/></svg><span>Money</span></button>
+      <button class="tool" data-panel="guests" aria-label="Guests panel"><svg width="22" height="20" viewBox="0 0 22 18"><circle cx="7" cy="5" r="3.2" fill="#2a7f7a"/><path d="M1.5 16.5c0-3.6 2.5-6 5.5-6s5.5 2.4 5.5 6z" fill="#2a7f7a"/><circle cx="15.5" cy="6.5" r="2.6" fill="#7fb7b1"/><path d="M11.6 16.5c.2-3 2-5 4-5s4.6 2 4.6 5z" fill="#7fb7b1"/></svg><span>Guests</span></button>
+      <button class="tool" data-panel="prices" aria-label="Prices panel"><svg width="22" height="20" viewBox="0 0 22 20"><path d="M2.5 3.5h8l9 9-7 7-9-9z" fill="#2a7f7a" stroke="#1d5450" stroke-width="1.2" stroke-linejoin="round"/><circle cx="7" cy="7.5" r="1.8" fill="#fbf4e2"/></svg><span>Prices</span></button>
+    </div>
+    <div id="hint" hidden></div>
+    <button id="cancel" hidden>Done</button>
+    <div class="speed" id="speed">
+      <button data-s="0" aria-label="Pause"><svg width="14" height="16" viewBox="0 0 14 16"><rect x="1" y="1" width="4.2" height="14" rx="1.6" fill="currentColor"/><rect x="8.8" y="1" width="4.2" height="14" rx="1.6" fill="currentColor"/></svg></button>
+      <button data-s="1" aria-label="Normal speed">1×</button>
+      <button data-s="2" aria-label="Double speed">2×</button>
+      <button data-s="3" aria-label="Triple speed">3×</button>
+    </div>
+  </div>
+  <div id="cats" role="tablist" aria-label="Build categories"></div>
+  <div class="builds" id="builds"></div>
+</div>
+
+<div id="sheet" hidden>
+  <div class="sheet-head">
+    <div class="tabs" id="tabs">
+      <button data-tab="money">Money</button><button data-tab="guests">Guests</button><button data-tab="prices">Prices</button><button data-tab="goal">Goal</button>
+    </div>
+    <button id="sheetClose" aria-label="Close panel">✕</button>
+  </div>
+  <div id="sheetBody"></div>
+</div>
+
+<div id="modal" hidden><div class="mcard" id="mcard"></div></div>
+<div id="toast"><div class="ti">!</div><div id="toastTxt"></div></div>
+</body>
+</html>
